@@ -31,8 +31,9 @@ public class User {
     }
 
     public static void main(String[] args) {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 100; i++) {
             new User("U" + i, "E" + i);
+            System.out.println(i);
         }
         System.gc();
         info();
