@@ -1,6 +1,5 @@
 package ru.job4j.cache;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -15,7 +14,13 @@ public class DirFileCache extends AbstractCache<String, String> {
     }
 
     @Override
-    protected String load(String key) throws IOException {
-        return Files.readString(Path.of(cachingDir, key));
+    protected String load(String key) {
+        String value = "";
+        try {
+            value = Files.readString(Path.of(cachingDir, key));
+        } catch (Exception e) {
+            System.err.println("File or directory not found!: " + e.getMessage());
+        }
+        return value;
     }
 }

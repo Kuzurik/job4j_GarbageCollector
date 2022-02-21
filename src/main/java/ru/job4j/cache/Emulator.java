@@ -18,23 +18,14 @@ public class Emulator {
 
     }
 
-    public void loadFile() throws IOException {
-        if (!cache.isKey(key)) {
-            cache.put(key, cache.load(key));
-        }
-    }
-
-    public String getFromCash(String key) {
+    public String getFromCash() throws IOException {
         return cache.get(key);
     }
-
-
 
     public static void main(String[] args) throws IOException {
         Emulator em = new Emulator();
         em.getPath();
-        em.loadFile();
-        System.out.println(em.getFromCash("Rihanna.txt"));
+        System.out.println(em.getFromCash());
 
 
     }
